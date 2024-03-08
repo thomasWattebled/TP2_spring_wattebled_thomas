@@ -3,6 +3,12 @@
 
 <h1 th:each="personne:${personnes}"  th:text="'Bonjour ' + ${personne.prenom}"> </h1>
 
+<form action="/logout" method="post">
+
+<input type="submit" value="logout">
+
+<h1>Agenda</h1>
+</form>
 
 </body>
 

@@ -48,5 +48,10 @@ public class PersonneController {
 		return "/agenda";
 	}
 	
+	@PostMapping("/logout")
+	public String logout() {
+		return "redirect:/home";
+	}
+	
 	
 }
