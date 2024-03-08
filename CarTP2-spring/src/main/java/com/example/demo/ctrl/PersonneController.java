@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Personne;
 import com.example.demo.PersonneService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class PersonneController {
 	
@@ -39,11 +41,14 @@ public class PersonneController {
 		return "redirect:/home";
 	}
 	
-	@PostMapping("/agenda")
-	public String agendaPersonne ( Model model ,@RequestParam String email, @RequestParam String mdp) {
+	@PostMapping("/login")
+	public String agendaPersonne ( HttpSession session,@RequestParam String email, @RequestParam String mdp) {
 		ArrayList<Personne>personnes = (ArrayList<Personne>) service.getByEmail(email) ;
 		if(personnes.get(0).getMdp().equals(mdp)) {
-			model.addAttribute("personnes",personnes);
+			session.setAttribute("email",personnes.get(0).getEmail());
+			session.setAttribute("id",personnes.get(0).getId());
+			session.setAttribute("id",personnes.get(0).getNom());
+			session.setAttribute("id",personnes.get(0).getPrenom());
 			return "/agenda";
 		}
 		else {
@@ -60,6 +65,13 @@ public class PersonneController {
 		return "redirect:/home";
 	}
 	
+	@PostMapping("/ajouterAgenda")
+	public String addAgenda(@RequestParam String nom) {
+		
+		
+		
+		return "/agenda";
+	}
 	
 	
 	
