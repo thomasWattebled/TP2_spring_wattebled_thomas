@@ -1,0 +1,13 @@
+<html xmlns:th="http://thymeleaf.org">
+<body>
+
+<h1>Bonjour</h1>
+<form action="/agenda" method="post">
+
+<p th:each="personne:${personnes}"  th:text="${personne.prenom}"> 
+
+
+<p> Email :<input type="text" name="email">
+Password :<input type="text" name="mdp">
+<input type="submit" value="test">
+</form>

@@ -23,6 +23,7 @@ public class Personne {
 		this.mdp =mdp;
 		this.nom = nom;
 		this.prenom=prenom;
+		agendas = new ArrayList<Agenda>();
 	}
 	
 	@Id
