@@ -8,13 +8,14 @@ import jakarta.persistence.Id;
 public class Agenda {
 	private Long id;
 	private String nom;
-	private int UserId;
+	private Long UserId;
 	
 public Agenda() {
 		
 	}
 
-public Agenda(String nom) {
+public Agenda(long UserId,String nom) {
+	this.UserId= UserId;
 	this.nom=nom;
 }
 

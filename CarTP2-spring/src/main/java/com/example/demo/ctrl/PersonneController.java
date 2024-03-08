@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.Agenda;
 import com.example.demo.Personne;
 import com.example.demo.PersonneService;
 
@@ -47,8 +48,9 @@ public class PersonneController {
 		if(personnes.get(0).getMdp().equals(mdp)) {
 			session.setAttribute("email",personnes.get(0).getEmail());
 			session.setAttribute("id",personnes.get(0).getId());
-			session.setAttribute("id",personnes.get(0).getNom());
-			session.setAttribute("id",personnes.get(0).getPrenom());
+			session.setAttribute("nom",personnes.get(0).getNom());
+			session.setAttribute("prenom",personnes.get(0).getPrenom());
+			session.setAttribute("agenda",personnes.get(0).getAgenda());
 			return "/agenda";
 		}
 		else {
@@ -66,9 +68,9 @@ public class PersonneController {
 	}
 	
 	@PostMapping("/ajouterAgenda")
-	public String addAgenda(@RequestParam String nom) {
+	public String addAgenda(HttpSession session,@RequestParam String nom) {
 		
-		
+		Agenda agenda = new Agenda((Long)session.getAttribute("id"),nom);
 		
 		return "/agenda";
 	}

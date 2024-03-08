@@ -1,7 +1,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <body>
 
-<h1 th:each="personne:${personnes}"  th:text="'Bonjour ' + ${personne.prenom}"> </h1>
+<h1  th:text="'Bonjour ' + ${session.prenom}"> </h1>
 
 <form action="/logout" method="post">
 
@@ -10,7 +10,7 @@
 
 <h1>Agenda</h1>
 
-<p th:each="personne:${personnes}" th:text="'Bonjour ' + ${personne.agenda}">
+<p  th:text="'Bonjour ' + ${session.agenda}">
 
 
 <form action="/addAgenda" method="post">
