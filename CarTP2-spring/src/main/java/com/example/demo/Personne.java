@@ -48,7 +48,7 @@ public class Personne {
 	
 	public void setNom(String newnom) { this.nom=newnom; }
 	
-	public void setPrenom(String newPrenom) { this.nom=newPrenom; }
+	public void setPrenom(String newPrenom) { this.prenom=newPrenom; }
 	
 	public void setEmail(String newEmail) { this.email = newEmail ;}
 	

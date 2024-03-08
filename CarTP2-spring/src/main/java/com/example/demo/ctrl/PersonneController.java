@@ -41,10 +41,11 @@ public class PersonneController {
 	
 	@PostMapping("/agenda")
 	public String agendaPersonne ( Model model ,@RequestParam String email, @RequestParam String mdp) {
-		ArrayList<Personne>personnes = (ArrayList<Personne>) service.getByEmail(email);
-		System.out.println("bonjour "+ personnes.get(0).getPrenom());
+		ArrayList<Personne>personnes = (ArrayList<Personne>) service.getByEmail(email) ;
+		System.out.println(personnes.size());
+		System.out.println("bonjour "+ personnes.get(0).getEmail()+ " " + personnes.get(0).getPrenom()+ " "+ personnes.get(0).getMdp()+ " "+ personnes.get(0).getNom() );
 		model.addAttribute("personnes",personnes);
-		return "redirect:/agenda";
+		return "/agenda";
 	}
 	
 	
