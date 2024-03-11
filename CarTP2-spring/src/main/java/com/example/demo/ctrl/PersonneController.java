@@ -28,6 +28,17 @@ public class PersonneController {
 	public String home(Model model) {
 		return "home";
 	}
+	 private List<Agenda> agendas;
+	
+	@GetMapping("/home/agenda")
+	public String home_agenda(HttpSession session,Model model) {
+		List<Agenda> agendas = new ArrayList<>();
+		agendas = service.getAgendaById((Long)session.getAttribute("id"));
+		//System.out.println(agendas);		
+		//agendas.add(new Agenda(1,"test"));
+		model.addAttribute("agendas",agendas);
+		return "agenda";
+	}
 	
 	@PostMapping("/init")
 	public String init() {
@@ -51,7 +62,7 @@ public class PersonneController {
 			session.setAttribute("nom",personnes.get(0).getNom());
 			session.setAttribute("prenom",personnes.get(0).getPrenom());
 			session.setAttribute("agenda",personnes.get(0).getAgenda());
-			return "/agenda";
+			return "redirect:/home/agenda";
 		}
 		else {
 			return "/home";
@@ -67,13 +78,14 @@ public class PersonneController {
 		return "redirect:/home";
 	}
 	
-	@PostMapping("/ajouterAgenda")
+	@PostMapping("/addAgenda")
 	public String addAgenda(HttpSession session,@RequestParam String nom) {
+		service.ajouterAgenda((Long)session.getAttribute("id"),nom);
+		//Agenda agenda = new Agenda((Long)session.getAttribute("id"),nom);
 		
-		Agenda agenda = new Agenda((Long)session.getAttribute("id"),nom);
-		
-		return "/agenda";
+		return "redirect:/home/agenda";
 	}
+	
 	
 	
 	

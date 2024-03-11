@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface PersonneService {
 
@@ -9,7 +10,11 @@ public interface PersonneService {
 	public void init();
 
 	public void ajouterPersonne(String email, String mdp,String nom, String prenom);
+	
+	public void ajouterAgenda(Long id, String name);
 
 	public ArrayList<Personne> getByEmail(String email);
+
+	public List<Agenda> getAgendaById(Long userId);
 	
 }

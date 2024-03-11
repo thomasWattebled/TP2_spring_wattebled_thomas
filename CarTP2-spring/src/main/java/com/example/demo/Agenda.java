@@ -37,6 +37,13 @@ public void setNom(String nom) {
 	this.nom=nom ;
 }
 
+public Long getUserId() {
+	return this.UserId;
+}
+
+public void setUserId(Long UserId) {
+	this.UserId =UserId;
+}
 
 
 
