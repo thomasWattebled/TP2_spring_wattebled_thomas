@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.personne;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonneServiceImpl implements PersonneService{
-	@Autowired
+	@Autowired 
 	
 	private PersonneRepository repo;
-	@Autowired
-	private AgendaRepository agendaRepo;
+	
 	
 	@Override
 	public void init() {
@@ -36,12 +35,5 @@ public class PersonneServiceImpl implements PersonneService{
 		
 	}
 	
-	public void ajouterAgenda(Long userId, String name) {
-		
-		agendaRepo.save(new Agenda(userId,name));
-	}
 	
-	public List<Agenda> getAgendaById(Long userId){
-		return agendaRepo.findByUserId(userId);
-	}
 }

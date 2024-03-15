@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1  th:text="'Bonjour ' + ${session.prenom}"> </h1>
+
+<form action="/agenda/retour" method="post">
+<input type="submit" value="retour">
+</form>
+
+<form action="/agenda/addEvenement" method="post">
+<p> 
+date :<input type="text" name="date">
+horaire début :<input type="text" name="h_deb">
+horaire fin:<input type="text" name="h_fin">
+libelle  :<input type="text" name="libelle">
+<input type="submit" value="submit">
+</form>
+
+<div th:each="evenement : ${evenements}">
+	<p th:text="${evenement.date}+ ' '+ ${evenement.libelle} +' '+ ${evenement.h_deb} + ' - ' + ${evenement.h_fin}"/>
+	<a th:href="'/agenda/delete/' + ${evenement.libelle} " th:text="delet"> </a>
+</div>
+
+</body>
+</html>

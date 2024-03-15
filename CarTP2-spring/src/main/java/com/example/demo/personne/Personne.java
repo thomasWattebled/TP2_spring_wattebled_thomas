@@ -1,6 +1,8 @@
-package com.example.demo;
+package com.example.demo.personne;
 
 import java.util.ArrayList;
+
+import com.example.demo.agenda.Agenda;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

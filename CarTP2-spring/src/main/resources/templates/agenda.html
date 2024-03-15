@@ -3,25 +3,29 @@
 
 <h1  th:text="'Bonjour ' + ${session.prenom}"> </h1>
 
-<form action="/logout" method="post">
+<form action="/agenda/logout" method="post">
 
 <input type="submit" value="logout">
 </form>
 
 <h1>Agenda</h1>
 
-<tr th:each="agenda : ${agendas}">
-	<td th:text="${agenda.nom}"/>
-</tr>
+<div th:each="agenda : ${agendas}">
+	<p th:text="${agenda.nom}"/>
+	<form action="/agenda/agenda" method="post">
+
+	<input type="submit" th:value="${agenda.nom} " name="nom">
+	</form>
+	<a th:href="'/agenda/agenda/' + ${agenda.nom} " th:text="${agenda.nom}"></a>
+</div>
 
 
-<form action="/addAgenda" method="post">
+<form action="/agenda/addAgenda" method="post">
 <p> nom :<input type="text" name="nom">
 <input type="submit" value="ajouterAgenda">
 </form>
 
 </body>
-
 
 </html>
 
