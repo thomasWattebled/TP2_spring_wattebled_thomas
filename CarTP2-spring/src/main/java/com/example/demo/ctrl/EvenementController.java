@@ -49,6 +49,15 @@ public class EvenementController {
 		return "redirect:/agenda/agenda/"+ agenda.getNom();
 	}
 	
+	@GetMapping("/imprimer")
+	public String imprimer(Model model) {
+		List<Evenement> evenements = new ArrayList<>();
+		evenements = evenementService.getEvenementById(agenda.getId());
+		System.out.println(evenements.size());
+		model.addAttribute("evenements",evenements);
+		return "impression";
+	}
+	
 	@PostMapping("/addEvenement")
 	public String addAgenda(@RequestParam String date, @RequestParam String h_deb, @RequestParam String h_fin, @RequestParam String libelle) {
 		

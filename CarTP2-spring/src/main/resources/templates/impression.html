@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+
+<table > 
+<thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Libelle</th>
+      <th scope="col">Heure_debut</th>
+      <th scope="col">Heure_Fin</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr th:each="evenement : ${evenements}">
+      <th scope="row" th:text="${evenement.date}"></th>
+      <td th:text="${evenement.libelle}"></td>
+      <td th:text="${evenement.h_deb}"></td>
+      <td th:text="${evenement.h_fin}"></td>
+    </tr>
+	</tbody>
+</table>
+</body>
+</html>
