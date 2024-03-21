@@ -32,6 +32,9 @@ public class EvenementController {
 	
 	@GetMapping("/agenda/{nom}")
 	public String home_agenda(@PathVariable String nom,HttpSession session,Model model) {
+		if(session.getAttribute("id")==null) {
+			return "redirect:/agenda/home";
+		}
 		agenda = agendaService.getAgendaByName(nom, (Long)session.getAttribute("id")); ;
 		List<Evenement> evenements = new ArrayList<>();
 		evenements = evenementService.getEvenementById(agenda.getId());

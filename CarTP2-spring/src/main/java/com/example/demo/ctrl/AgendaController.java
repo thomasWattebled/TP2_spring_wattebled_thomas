@@ -26,12 +26,18 @@ public class AgendaController {
 	
 	@GetMapping("/user")
 	public String home_agenda(HttpSession session,Model model) {
+		
+		if(session.getAttribute("id")==null) {
+			return "redirect:/agenda/home";
+		}
 		List<Agenda> agendas = new ArrayList<>();
 		agendas = agendaService.getAgendaById((Long)session.getAttribute("id"));
 		//System.out.println(agendas);		
 		//agendas.add(new Agenda(1,"test"));
 		model.addAttribute("agendas",agendas);
+		
 		return "agenda";
+		
 	}
 	
 	
@@ -44,7 +50,12 @@ public class AgendaController {
 	}
 	 
 	@PostMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
+		session.removeAttribute("id");
+		session.removeAttribute("email");
+		session.removeAttribute("nom");
+		session.removeAttribute("prenom");
+		session.removeAttribute("email");
 		return "redirect:/agenda/home";
 	} 
 }
