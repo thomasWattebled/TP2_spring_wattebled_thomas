@@ -48,7 +48,7 @@ public class PersonneController {
 	@PostMapping("/login")
 	public String agendaPersonne ( HttpSession session,@RequestParam String email, @RequestParam String mdp) {
 		ArrayList<Personne>personnes = (ArrayList<Personne>) service.getByEmail(email) ;
-		if(personnes.get(0).getMdp().equals(mdp)) {
+		if(personnes.size() >0 && personnes.get(0).getMdp().equals(mdp)) {
 			session.setAttribute("email",personnes.get(0).getEmail());
 			session.setAttribute("id",personnes.get(0).getId());
 			session.setAttribute("nom",personnes.get(0).getNom());
